@@ -23,12 +23,14 @@ public class Hospedagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoHospedagem;
 	
-	//faz o Relacionamento de UM para UM com a tabela Quarto
-	//Cascade ALL = se apagar um item que é linkado na tabela(nesse caso o quarto) Ele ira apagar todas as hospedagens que utilizaram aquele dado
-	//Cascade PERSIST nao deixa apagar um item (QUARTO) que esta linkado a outro (HOSPEDAGEM)
+	//OneToOne - faz o Relacionamento de UM para UM com a tabela Quarto
+	//CascadeType.ALL = se apagar um item que é linkado na tabela(nesse caso o quarto) Ele ira apagar todas as hospedagens que utilizaram aquele dado
+	//CascadeType.PERSIST nao deixa apagar um item (QUARTO) que esta linkado a outro (HOSPEDAGEM)
 	@OneToOne (cascade = CascadeType.PERSIST)
-	//pega o atributo abaixo dessa Tabela e associa com o Campo "cd_quarto" da tabela Quarto (tipo abaixo)
+	//name = da um nome para o atributo abaixo 
+	//referencedColumnName - pega o atributo abaixo dessa Tabela e associa com o Campo "cd_quarto" da tabela Quarto (tipo abaixo)
 	@JoinColumn(name = "cd_quarto" , referencedColumnName = "cd_quarto")
+	//Atributo do tipo quarto para fazer o relacionamento.
 	private Quarto quarto;
 		
 	private Date dataCheckin = new java.sql.Date(System.currentTimeMillis());

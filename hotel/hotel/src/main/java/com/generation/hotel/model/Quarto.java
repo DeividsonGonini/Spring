@@ -12,7 +12,6 @@ public class Quarto {
 
 	@Column(name = "cd_quarto")
 	@Id
-	
 	private int numeroQuarto;
 	
 	@Column(name ="qt_cama", nullable = false)
